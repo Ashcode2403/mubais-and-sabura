@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mubais &amp; Sabura — Wedding Invitation</title>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mubais &amp; Sabura | Wedding Invitation 💍">
+<meta property="og:description" content="You're gracefully invited to our Wedding celebration!">
+<meta property="og:image" content="https://mubais-and-sabura.vercel.app/couple.png">
+<meta property="og:url" content="">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Poppins:wght@300;400;500;600&family=Italianno&family=Cinzel:wght@400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════ LOCAL FONTS ══════════ */
+@font-face {
+  font-family: 'Brittany';
+  src: url('fonts/BrittanySignature.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Prestoria';
+  src: url('fonts/Coolvetica Rg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ══════════ TOKENS ══════════ */
+:root {
+  --gold:        #b8922e;
+  --gold-light:  #8a6914;
+  --gold-bright: #d4af37;
+  --gold-pale:   rgba(184,146,46,0.15);
+  --cream:       #fffdf8;
+  --cream-mid:   #fdf6e8;
+  --cream-deep:  #f7ecce;
+  --text:        #3d2e0a;
+  --text-muted:  #7a6030;
+  --white:       #ffffff;
+}
+
+/* ══════════ RESET ══════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.5px;
+}
+
+/* ══════════ OPENING SCREEN ══════════ */
+#openingScreen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  overflow: hidden;
+  transition: opacity 1.3s ease, visibility 1.3s ease;
+}
+
+#openingScreen.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Video bg */
+.opening-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Dark overlay */
+#openingScreen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(0,0,0,0.72) 0%,
+    rgba(20,10,0,0.65) 100%
+  );
+  z-index: 1;
+}
+
+/* Gold shimmer */
+#openingScreen::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(212,175,55,0.06) 20%,
+    rgba(255,248,210,0.18) 40%,
+    rgba(212,175,55,0.06) 60%
+  );
+  transform: translateX(-50%) rotate(25deg);
+  animation: shimmer 6s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0%   { transform: translateX(-60%) rotate(25deg); }
+  100% { transform: translateX(60%) rotate(25deg); }
+}
+
+/* Fallback bg when no video */
+.opening-bg-fallback {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(212,175,55,0.18) 0%, transparent 60%),
+              linear-gradient(180deg, #1a1208 0%, #0e0b05 100%);
+  z-index: 0;
+}
+
+/* Inner content */
+.opening-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 30px 24px;
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* Corner frame lines */
+.opening-frame {
+  position: absolute;
+  inset: 24px;
+  pointer-events: none;
+  z-index: 2;
+}
+.opening-frame i {
+  position: absolute;
+  width: 40px; height: 40px;
+  border: 0 solid rgba(212,175,55,0.7);
+}
+.opening-frame i:nth-child(1) { top:-1px; left:-1px;  border-width:2px 0 0 2px; }
+.opening-frame i:nth-child(2) { top:-1px; right:-1px; border-width:2px 2px 0 0; }
+.opening-frame i:nth-child(3) { bottom:-1px; left:-1px;  border-width:0 0 2px 2px; }
+.opening-frame i:nth-child(4) { bottom:-1px; right:-1px; border-width:0 2px 2px 0; }
+
+.opening-ornament {
+  color: rgba(212,175,55,0.7);
+  letter-spacing: 12px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  animation: fadeInUp 1s ease 0.3s both;
+}
+
+/* Typed couple name */
+.opening-names {
+  font-family: 'Brittany', 'Italianno', cursive;
+  font-size: clamp(60px, 16vw, 130px);
+  line-height: 1.15;
+  color: #fef3c7;
+  filter: drop-shadow(0 2px 20px rgba(212,175,55,0.45));
+  min-height: 1.3em;
+  word-break: break-word;
+}
+
+/* Blinking caret */
+.caret {
+  display: inline-block;
+  width: 3px;
+  height: 0.7em;
+  margin-left: 4px;
+  background: rgba(212,175,55,0.9);
+  vertical-align: -0.05em;
+  animation: blink 0.85s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.opening-subtext {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(9px, 1.8vw, 12px);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(212,175,55,0.75);
+  margin-top: 22px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
+}
+
+.opening-btn {
+  margin-top: 32px;
+  padding: 13px 38px;
+  border: 1px solid rgba(212,175,55,0.7);
+  background: transparent;
+  color: rgba(255,243,199,0.9);
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1s ease 0.5s, transform 1s ease 0.5s,
+              background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+#openingScreen.typed .opening-subtext,
+#openingScreen.typed .opening-btn {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.opening-btn:hover {
+  background: rgba(212,175,55,0.88);
+  color: #1a1208;
+  box-shadow: 0 0 28px rgba(212,175,55,0.5);
+}
+
+/* ══════════ PARTICLES ══════════ */
+#particles {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  animation: floatUp linear infinite;
+  opacity: 0;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(100vh) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.5; }
+  90%  { opacity: 0.2; }
+  100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+}
+
+/* ══════════ STARS ══════════ */
+.stars-container {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.star {
+  position: absolute;
+  background: var(--gold-bright);
+  border-radius: 50%;
+  animation: twinkle ease infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.08; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(1.6); }
+}
+
+/* ══════════ SECTION BASE ══════════ */
+section { position: relative; z-index: 1; }
+
+.section-wrap {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 90px 32px;
+}
+
+/* Section title */
+.section-title { text-align: center; margin-bottom: 55px; }
+.section-title .label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 12px;
+}
+.section-title h2 {
+  font-family: 'Italianno', cursive;
+  font-size: clamp(46px, 8vw, 80px);
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-bright) 50%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.section-title .divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.section-title .divider::before,
+.section-title .divider::after {
+  content: '';
+  flex: 1;
+  max-width: 90px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.divider-gem {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+/* ══════════ HERO ══════════ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px;
+ overflow: hidden;
+  position: relative;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+
+
+/* Corner decorations */
+.corner-tl, .corner-tr, .corner-bl, .corner-br {
+  position: absolute;
+  width: 44px; height: 44px;
+  border-color: rgba(184,146,46,0.45);
+  border-style: solid;
+  z-index: 2;
+}
+.corner-tl { top:22px; left:22px;    border-width:2px 0 0 2px; }
+.corner-tr { top:22px; right:22px;   border-width:2px 2px 0 0; }
+.corner-bl { bottom:22px; left:22px; border-width:0 0 2px 2px; }
+.corner-br { bottom:22px; right:22px;border-width:0 2px 2px 0; }
+
+/* Hero border */
+.hero-frame {
+  position: absolute; inset:22px;
+  border: 1px solid rgba(184,146,46,0.2);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-content { position: relative; z-index: 2; }
+
+.bismillah {
+  font-family: 'Amiri', serif;
+  font-size: clamp(24px, 5vw, 40px);
+  color: var(--gold);
+  direction: rtl;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  opacity: 0;
+  animation: fadeUp 1.2s ease 0.3s forwards;
+}
+
+.bismillah-trans {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: clamp(10px, 1.4vw, 13px);
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 42px;
+  opacity: 0;
+  animation: fadeUp 1.2s ease 0.6s forwards;
+}
+
+.ornament {
+  color: var(--gold);
+  font-size: 22px;
+  letter-spacing: 12px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.9s forwards;
+  margin: 10px 0;
+}
+
+.quran-verse {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(14px, 2.2vw, 20px);
+  color: var(--text-muted);
+  margin: 16px 0 34px;
+  opacity: 0;
+  animation: fadeUp 1.2s ease 1.1s forwards;
+  letter-spacing: 1px;
+}
+
+/* Couple names — Brittany / Italianno */
+.couple-names {
+  font-family: 'Brittany', 'Italianno', cursive;
+  font-size: clamp(64px, 14vw, 130px);
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-bright) 45%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  line-height: 1.1;
+  filter: drop-shadow(0 0 24px rgba(184,146,46,0.35));
+  opacity: 0;
+  animation: fadeUp 1.6s ease 1.3s forwards;
+  padding: 10px 0;
+}
+.couple-names .amp {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(11px, 1.8vw, 15px);
+  font-style: normal;
+  -webkit-text-fill-color: var(--gold);
+  color: var(--gold);
+  letter-spacing: 10px;
+  margin: 4px 0;
+  filter: none;
+}
+
+.date-badge {
+  margin-top: 30px;
+  opacity: 0;
+  animation: fadeUp 1.2s ease 1.8s forwards;
+}
+.date-badge p {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(10px, 1.8vw, 13px);
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  border-top: 1px solid rgba(184,146,46,0.35);
+  border-bottom: 1px solid rgba(184,146,46,0.35);
+  padding: 11px 36px;
+  margin-top: 10px;
+}
+
+.hashtag {
+  margin-top: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(14px, 2vw, 18px);
+  color: var(--text-muted);
+  opacity: 0;
+  animation: fadeUp 1.2s ease 2.1s forwards;
+}
+
+/* Scroll hint */
+.scroll-hint {
+  position: absolute;
+  bottom: 34px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column;
+  align-items: center; gap: 6px;
+  opacity: 0;
+  animation: fadeUp 1s ease 2.7s forwards;
+}
+.scroll-hint span {
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px; height: 52px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.15); }
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(28px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ══════════ MUSIC ══════════ */
+.music-btn {
+  position: fixed;
+  bottom: 28px; right: 24px;
+  z-index: 999;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold-light));
+  border: 2px solid rgba(184,146,46,0.6);
+  color: #fff8e1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 0 20px rgba(184,146,46,0.45);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.music-btn:hover { transform: scale(1.1); box-shadow: 0 0 35px rgba(184,146,46,0.75); }
+.music-btn.playing { animation: pulseRing 2s ease infinite; }
+@keyframes pulseRing {
+  0%   { box-shadow: 0 0 0 0   rgba(184,146,46,0.7); }
+  70%  { box-shadow: 0 0 0 14px rgba(184,146,46,0); }
+  100% { box-shadow: 0 0 0 0   rgba(184,146,46,0); }
+}
+
+/* ══════════ INVITATION ══════════ */
+#invitation {
+  background: linear-gradient(180deg, var(--cream-mid) 0%, var(--cream-deep) 50%, var(--cream-mid) 100%);
+  text-align: center;
+  padding: 90px 32px;
+}
+.invite-card {
+  max-width: 720px;
+  margin: 0 auto;
+  border: 1px solid rgba(184,146,46,0.3);
+  padding: 64px 48px;
+  position: relative;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(4px);
+}
+.invite-card::before {
+  content: '✦';
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--cream-deep);
+  color: var(--gold);
+  padding: 0 16px;
+  font-size: 16px;
+}
+.invite-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(16px, 2.5vw, 22px);
+  line-height: 2;
+  color: var(--text);
+}
+.invite-text strong {
+  color: var(--gold-light);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* ══════════ COUPLE ══════════ */
+#couple {
+  background: linear-gradient(180deg, var(--white) 0%, var(--cream-mid) 100%);
+}
+.couple-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 32px;
+  align-items: center;
+}
+.person-card {
+  text-align: center;
+  padding: 44px 24px;
+  border: 1px solid rgba(184,146,46,0.22);
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(4px);
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.person-card:hover {
+  border-color: rgba(184,146,46,0.55);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(184,146,46,0.12);
+}
+.person-role {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.person-name {
+  font-family: 'Brittany', 'Italianno', cursive;
+  font-size: clamp(36px, 5.5vw, 58px);
+  color: var(--gold-light);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.person-parents {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: clamp(12px, 1.7vw, 14px);
+  color: var(--text-muted);
+  line-height: 1.9;
+  font-style: italic;
+}
+.person-parents strong {
+  color: var(--gold-light);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.couple-and {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 10px;
+}
+.and-text {
+  font-family: 'Italianno', cursive;
+  font-size: 64px;
+  color: var(--gold);
+  line-height: 1;
+}
+.and-line {
+  width: 1px; height: 66px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+}
+
+/* ══════════ COUNTDOWN ══════════ */
+#countdown {
+  background: linear-gradient(135deg, var(--cream-mid), var(--cream-deep));
+  text-align: center;
+  padding: 90px 32px;
+}
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 44px;
+}
+.count-box {
+  min-width: 94px;
+  padding: 22px 18px;
+  border: 1px solid rgba(184,146,46,0.35);
+  background: rgba(255,255,255,0.6);
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+.count-box::before, .count-box::after {
+  content: '';
+  position: absolute;
+  width: 8px; height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+.count-box::before { top:-4px; left:-4px; }
+.count-box::after  { bottom:-4px; right:-4px; }
+.count-num {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(38px, 6vw, 58px);
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+}
+.count-label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 8px;
+  display: block;
+}
+
+/* ══════════ EVENTS ══════════ */
+#events { background: var(--cream); }
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 26px;
+}
+.event-card {
+  border: 1px solid rgba(184,146,46,0.25);
+  padding: 38px 28px;
+  position: relative;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(4px);
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+.event-card::after {
+  content: '';
+  position: absolute; inset:0;
+  background: linear-gradient(135deg, rgba(184,146,46,0.08), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.event-card:hover::after { opacity: 1; }
+.event-card:hover {
+  border-color: rgba(184,146,46,0.6);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(184,146,46,0.12);
+}
+.event-num {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: rgba(138,105,20,0.7);
+  margin-bottom: 14px;
+}
+.event-name {
+  font-family: 'Italianno', cursive;
+  font-size: clamp(32px, 4.5vw, 48px);
+  color: var(--gold-light);
+  margin-bottom: 20px;
+  line-height: 1;
+}
+.event-detail {
+  display: flex; align-items: flex-start;
+  gap: 12px; margin: 10px 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: clamp(12px, 1.7vw, 14px);
+  color: var(--text-muted);
+}
+.event-detail .icon { color: var(--gold); font-size: 14px; min-width: 18px; margin-top: 2px; }
+.event-detail strong { color: var(--text); display: block; font-weight: 500; }
+.event-dress {
+  margin-top: 16px;
+  padding: 10px 16px;
+  background: rgba(184,146,46,0.08);
+  border-left: 2px solid var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(12px, 1.6vw, 14px);
+  color: var(--gold-light);
+}
+
+/* Event top-border accents */
+.event-card.nikah    { border-top: 2px solid var(--gold-bright); }
+.event-card.reception{ border-top: 2px solid rgba(139,58,82,0.6); }
+.event-card.sangeeth { border-top: 2px solid rgba(26,58,42,0.6); }
+.event-card.wedding  { border-top: 2px solid var(--gold); }
+
+/* ══════════ VENUE ══════════ */
+#venue {
+  background: linear-gradient(180deg, var(--white) 0%, var(--cream-mid) 100%);
+  text-align: center;
+}
+.venue-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 26px;
+  margin-bottom: 44px;
+}
+.venue-card {
+  padding: 38px 28px;
+  border: 1px solid rgba(184,146,46,0.25);
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(4px);
+  text-align: center;
+  transition: all 0.3s;
+}
+.venue-card:hover {
+  border-color: rgba(184,146,46,0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(184,146,46,0.1);
+}
+.venue-card .v-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.venue-card .v-name {
+  font-family: 'Italianno', cursive;
+  font-size: clamp(30px, 4.5vw, 44px);
+  color: var(--gold-light);
+  margin: 10px 0;
+}
+.venue-card .v-place {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.map-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 32px; padding: 14px 38px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  background: transparent;
+  cursor: pointer;
+}
+.map-btn:hover {
+  background: var(--gold);
+  color: var(--white);
+  box-shadow: 0 0 32px rgba(184,146,46,0.4);
+}
+
+/* ══════════ GALLERY ══════════ */
+#gallery { background: var(--cream); }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 200px);
+  gap: 14px;
+}
+.gallery-item {
+  border: 1px solid rgba(184,146,46,0.2);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  background: rgba(255,255,255,0.5);
+  display: flex; align-items: center; justify-content: center;
+}
+.gallery-item:hover { border-color: var(--gold); }
+.gallery-item:nth-child(1) { grid-column: span 2; }
+.gallery-item:nth-child(4) { grid-column: span 2; }
+.gallery-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+.gallery-item:hover .gallery-img { transform: scale(1.06); }
+.gallery-placeholder {
+  position: absolute; inset:0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px;
+}
+.gallery-placeholder .gp-icon { font-size: 28px; opacity: 0.25; }
+.gallery-placeholder .gp-text {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: rgba(184,146,46,0.4);
+  text-transform: uppercase;
+}
+
+/* ══════════ RSVP ══════════ */
+#rsvp {
+  background: linear-gradient(135deg, var(--cream-mid), var(--cream-deep));
+  text-align: center;
+  padding: 90px 32px;
+}
+.rsvp-card {
+  max-width: 520px;
+  margin: 0 auto;
+  border: 1px solid rgba(184,146,46,0.3);
+  padding: 54px 44px;
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(4px);
+  position: relative;
+}
+.rsvp-card::before {
+  content: '✦';
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--cream-deep);
+  color: var(--gold);
+  padding: 0 16px;
+  font-size: 15px;
+}
+.rsvp-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(15px, 2.2vw, 19px);
+  color: var(--text-muted);
+  line-height: 2;
+  margin-bottom: 28px;
+}
+.phone-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold-light));
+  color: var(--white);
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 500;
+  margin: 8px;
+  transition: all 0.3s;
+}
+.phone-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(184,146,46,0.4);
+}
+.wa-link {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+}
+
+/* ══════════ FOOTER ══════════ */
+footer {
+  background: var(--cream-mid);
+  text-align: center;
+  padding: 70px 32px;
+  border-top: 1px solid rgba(184,146,46,0.2);
+}
+.footer-names {
+  font-family: 'Brittany', 'Italianno', cursive;
+  font-size: clamp(48px, 9vw, 80px);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-bright), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 16px rgba(184,146,46,0.3));
+}
+.footer-msg {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(13px, 2vw, 16px);
+  color: var(--text-muted);
+  margin-bottom: 26px;
+}
+.footer-deco {
+  color: var(--gold);
+  font-size: 20px;
+  letter-spacing: 14px;
+  opacity: 0.45;
+  margin-bottom: 20px;
+}
+.footer-small {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: rgba(138,105,20,0.8);
+  text-transform: uppercase;
+}
+
+/* ══════════ ISLAMIC SEPARATOR ══════════ */
+.islamic-sep {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 22px;
+  color: var(--gold);
+  letter-spacing: 16px;
+  opacity: 0.45;
+}
+
+/* ══════════ REVEAL ANIMATIONS ══════════ */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-left {
+  opacity:0; transform:translateX(-40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal-left.visible { opacity:1; transform:translateX(0); }
+.reveal-right {
+  opacity:0; transform:translateX(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal-right.visible { opacity:1; transform:translateX(0); }
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width: 640px) {
+  .couple-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .couple-and {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .and-line {
+    width: 60px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(4) { grid-column: span 1; }
+  .invite-card { padding: 44px 22px; }
+  .rsvp-card   { padding: 44px 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Stars -->
+<div class="stars-container" id="stars"></div>
+<!-- Particles -->
+<div id="particles"></div>
+
+<!-- ══════════════════════════════
+     OPENING SCREEN
+══════════════════════════════ -->
+<div id="openingScreen">
+  <!-- Corner frame -->
+  <div class="opening-frame"><i></i><i></i><i></i><i></i></div>
+
+  <!-- Video background (falls back gracefully) -->
+  <div class="opening-bg-fallback"></div>
+  <video class="opening-video" autoplay muted loop playsinline aria-hidden="true">
+    <source src="images/opening.mp4" type="video/mp4">
+  </video>
+
+  <div class="opening-inner">
+    <div class="opening-ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+    <!-- Typed names appear here -->
+    <div class="opening-names" aria-label="Mubais &amp; Sabura">
+      <span id="typedNames"></span><span class="caret"></span>
+    </div>
+    <div class="opening-subtext">Wedding Invitation</div>
+    <button class="opening-btn" id="openBtn" type="button">Open Invitation</button>
+  </div>
+</div>
+
+<!-- Music -->
+<button class="music-btn" id="musicBtn" title="Toggle Music">♪</button>
+<audio id="bgMusic" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ══════════════════════════════
+     HERO
+══════════════════════════════ -->
+<section id="hero">
+  <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
+    <source src="images/back.mp4" type="video/mp4">
+  </video>
+  <div class="corner-tl"></div><div class="corner-tr"></div>
+  <div class="corner-bl"></div><div class="corner-br"></div>
+  <div class="hero-frame"></div>
+
+  <div class="hero-content">
+    <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+    <div class="bismillah-trans">In the name of Allah, the Most Gracious, the Most Merciful</div>
+    <div class="ornament">✦ ✦ ✦</div>
+    <div class="quran-verse">"And We created you in pairs" — Quran 78:8</div>
+    <div class="couple-names">
+      Mubais
+      <span class="amp">&amp;</span>
+      Sabura
+    </div>
+    <div class="date-badge">
+      <p>7th November 2026</p>
+    </div>
+    <div class="hashtag">#M&amp;S 💍</div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     INVITATION MESSAGE
+══════════════════════════════ -->
+<section id="invitation">
+  <div class="invite-card reveal">
+    <div class="ornament" style="opacity:1;margin-bottom:22px">✦</div>
+    <p class="invite-text">
+      With the blessings of <strong>Allah</strong>, and joy in our hearts,<br>
+      we joyfully announce the union of our beloved<br>
+      <strong>Abdul Rahiman Mubais</strong> and <strong>Ayishath Sabura PM</strong>.<br><br>
+      Together with our families, we invite you to be a part<br>
+      of this beautiful beginning and grace us with your<br>
+      presence and duas.
+    </p>
+    <div class="ornament" style="opacity:1;margin-top:22px">✦ ✦ ✦</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);margin-top:16px;font-size:clamp(14px,2vw,18px)">
+      Welcome to the new beginnings of #M&amp;S 💍
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     COUPLE
+══════════════════════════════ -->
+<section id="couple">
+  <div class="section-wrap">
+    <div class="section-title reveal">
+      <span class="label">The Couple</span>
+      <h2>Two Hearts, One Blessing</h2>
+      <div class="divider"><div class="divider-gem"></div></div>
+    </div>
+
+    <div class="couple-grid">
+      <!-- Groom -->
+      <div class="person-card reveal-left">
+        <div class="person-role">✦ The Groom ✦</div>
+        <div class="person-name">Abdul Rahiman Mubais</div>
+        <div class="person-parents">
+          Son of<br>
+          <strong>Mr. B.A Yusuf</strong><br>
+
+        </div>
+      </div>
+
+      <!-- And -->
+      <div class="couple-and">
+        <div class="and-line"></div>
+        <div class="and-text">&amp;</div>
+        <div class="and-line"></div>
+      </div>
+
+      <!-- Bride -->
+      <div class="person-card reveal-right">
+        <div class="person-role">✦ The Bride ✦</div>
+        <div class="person-name">Ayishath Sabura PM</div>
+        <div class="person-parents">
+          Daughter of<br>
+          <strong>(Late) Mohammed</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     COUNTDOWN
+══════════════════════════════ -->
+<section id="countdown">
+  <div class="section-title reveal">
+    <span class="label">Counting Down</span>
+    <h2>Until We Say I Do</h2>
+    <div class="divider"><div class="divider-gem"></div></div>
+  </div>
+  <div class="countdown-grid">
+    <div class="count-box reveal"><span class="count-num" id="days">00</span><span class="count-label">Days</span></div>
+    <div class="count-box reveal"><span class="count-num" id="hours">00</span><span class="count-label">Hours</span></div>
+    <div class="count-box reveal"><span class="count-num" id="mins">00</span><span class="count-label">Minutes</span></div>
+    <div class="count-box reveal"><span class="count-num" id="secs">00</span><span class="count-label">Seconds</span></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     EVENTS
+══════════════════════════════ -->
+<section id="events">
+  <div class="section-wrap">
+    <div class="section-title reveal">
+      <span class="label">Celebrations</span>
+      <h2>Events</h2>
+      <div class="divider"><div class="divider-gem"></div></div>
+    </div>
+
+    <div class="events-grid">
+      <!-- Nikkah -->
+      <div class="event-card nikah reveal">
+        <div class="event-num">✦ NIKKAH</div>
+        <div class="event-name">Nikkah</div>
+        <div class="event-detail">
+          <span class="icon">📅</span>
+          <div><strong>7th November — Saturday</strong>After Asar &nbsp;·&nbsp; 05:00 PM</div>
+        </div>
+        <div class="event-detail">
+          <span class="icon">📍</span>
+          <div><strong>AH Palace</strong>Gandhi Nagar, Pavoor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     VENUE
+══════════════════════════════ -->
+<section id="venue">
+  <div class="section-wrap">
+    <div class="section-title reveal">
+      <span class="label">Where to Find Us</span>
+      <h2>Venues</h2>
+      <div class="divider"><div class="divider-gem"></div></div>
+    </div>
+
+    <div class="venue-cards">
+      <div class="venue-card reveal-left">
+        <div class="v-label">✦ Wedding ✦</div>
+        <div class="v-name">AH Palace</div>
+        <div class="v-place">Near Fox Cave Villa, Gandhi Nagar, Pavoor, Kerala</div>
+      </div>
+    </div>
+
+    <div style="text-align:center" class="reveal">
+      <a href="https://www.google.com/maps/search/?api=1&query=A+H+Palace+near+Fox+Cave+Villa+Gandhi+Nagar+Pavoor+Kerala+671323"
+         target="_blank" rel="noopener" class="map-btn">
+        📍 Open Location
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     GALLERY
+══════════════════════════════ -->
+
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer>
+  <div class="footer-deco">✦ ✦ ✦</div>
+  <div class="footer-names">Mubais &amp; Sabura</div>
+  <p class="footer-msg">We look forward to your presence and dua</p>
+  <div class="islamic-sep">☪</div>
+  <p class="footer-small">#M&amp;Stales 💍 &nbsp;·&nbsp; 7 November 2026</p>
+</footer>
+
+
+<!-- ══════════════════════════════
+     SCRIPTS
+══════════════════════════════ -->
+<script>
+/* ─── Stars ─── */
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 80; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const sz = Math.random() * 2 + 0.5;
+  s.style.cssText = `
+    width:${sz}px; height:${sz}px;
+    top:${Math.random()*100}%;
+    left:${Math.random()*100}%;
+    animation-duration:${2 + Math.random()*4}s;
+    animation-delay:${Math.random()*5}s;
+  `;
+  starsEl.appendChild(s);
+}
+
+/* ─── Particles ─── */
+const pCont = document.getElementById('particles');
+function makeParticle() {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  const sz = Math.random() * 3 + 1;
+  p.style.cssText = `
+    left:${Math.random()*100}%;
+    width:${sz}px; height:${sz}px;
+    animation-duration:${8 + Math.random()*10}s;
+    animation-delay:${Math.random()*6}s;
+  `;
+  pCont.appendChild(p);
+  setTimeout(() => p.remove(), 22000);
+}
+setInterval(makeParticle, 450);
+
+/* ─── Countdown ─── */
+function updateCountdown() {
+  const target = new Date('2026-11-07T17:00:00');
+  const diff = target - new Date();
+  const clamp = v => String(Math.max(0, v)).padStart(2, '0');
+  if (diff <= 0) {
+    ['days','hours','mins','secs'].forEach(id => document.getElementById(id).textContent = '00');
+    return;
+  }
+  document.getElementById('days').textContent  = clamp(Math.floor(diff / 86400000));
+  document.getElementById('hours').textContent = clamp(Math.floor((diff % 86400000) / 3600000));
+  document.getElementById('mins').textContent  = clamp(Math.floor((diff % 3600000) / 60000));
+  document.getElementById('secs').textContent  = clamp(Math.floor((diff % 60000) / 1000));
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ─── Scroll Reveal ─── */
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ─── Music ─── */
+const musicBtn = document.getElementById('musicBtn');
+const audio    = document.getElementById('bgMusic');
+let playing = false;
+
+musicBtn.addEventListener('click', () => {
+  if (playing) {
+    audio.pause();
+    musicBtn.textContent = '♪';
+    musicBtn.classList.remove('playing');
+    playing = false;
+  } else {
+    audio.play().then(() => {
+      musicBtn.textContent = '■';
+      musicBtn.classList.add('playing');
+      playing = true;
+    }).catch(() => { musicBtn.textContent = '♪'; });
+  }
+});
+
+document.addEventListener('click', () => {
+  if (!playing && audio.paused) {
+    audio.play().then(() => {
+      musicBtn.textContent = '■';
+      musicBtn.classList.add('playing');
+      playing = true;
+    }).catch(() => {});
+  }
+}, { once: true });
+
+/* ─── Opening Overlay — typewriter ─── */
+const openingScreen = document.getElementById('openingScreen');
+const typedEl       = document.getElementById('typedNames');
+const COUPLE_TEXT   = 'Mubais & Sabura';
+
+function typeCouple(i) {
+  typedEl.textContent = COUPLE_TEXT.slice(0, i);
+  if (i < COUPLE_TEXT.length) {
+    setTimeout(() => typeCouple(i + 1), 120 + Math.random() * 80);
+  } else {
+    openingScreen.classList.add('typed');
+  }
+}
+
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  typedEl.textContent = COUPLE_TEXT;
+  openingScreen.classList.add('typed');
+} else {
+  setTimeout(() => typeCouple(1), 900);
+}
+
+document.getElementById('openBtn').addEventListener('click', () => {
+  openingScreen.classList.add('hide');
+  setTimeout(() => openingScreen.remove(), 1500);
+  /* Try playing music on open */
+  if (!playing) {
+    audio.play().then(() => {
+      musicBtn.textContent = '■';
+      musicBtn.classList.add('playing');
+      playing = true;
+    }).catch(() => {});
+  }
+});
+</script>
+</body>
+</html>
